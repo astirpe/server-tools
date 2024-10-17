@@ -20,10 +20,9 @@ class TestSchedulerErrorMailer(TransactionCase):
             ),
             patch.object(self.env.cr, "rollback"),
         ):
-            self.env["ir.cron"]._handle_callback_exception(
+            self.cron._handle_callback_exception(
                 self.cron.name,
                 self.cron.ir_actions_server_id.id,
-                self.cron.id,
                 Exception("hello world"),
             )
 
