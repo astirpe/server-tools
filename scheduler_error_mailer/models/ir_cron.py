@@ -48,3 +48,6 @@ class IrCron(models.Model):
             return super()._callback(cron_name, server_action_id)
         except Exception as e:
             self._handle_callback_exception(cron_name, server_action_id, e)
+
+            # Re-raise the original job exception
+            raise e
