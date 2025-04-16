@@ -22,7 +22,7 @@ def migrate(cr, version):
         code: False for code, _ in env["res.lang"].get_installed() if code != "en_US"
     }
     module, xml_id = external_id.split(".")
-    fullpath = file_path(template.template_fs)
+    fullpath = file_path("scheduler_error_mailer/data/ir_cron_email_tpl.xml")
     template.update_field_translations("body_html", lang_false)
     doc = etree.parse(fullpath)
     for rec in doc.xpath(expr, tag="record", xml_id=xml_id, external_id=external_id):
